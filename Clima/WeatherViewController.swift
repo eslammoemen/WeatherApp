@@ -45,14 +45,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         locationManager.startUpdatingLocation()
         
     }
-       
-    
-    
-    
-    
-    
-    
-    
+
     func getWeatherData(url: String, parameters: [String: String]) {
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
@@ -76,10 +69,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
-    
-    
-    
-    
+
     func updateWeatherData(json : JSON) {
     
         let tempResult = json["main"]["temp"].doubleValue
@@ -95,15 +85,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
             updateUIWithWeatherData()
         }
-    
-        
 
-
-    
-    
-    
-    
-    
     func updateUIWithWeatherData() {
         
         cityLabel.text = weatherDataModel.city
@@ -111,11 +93,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
         
     }
-    
-    
-    
-    
-   
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
@@ -138,13 +116,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         print(error)
         cityLabel.text = "Location Unavailable"
     }
-    
-    
-
-    
-    
-    
-    
+ 
     func userEnteredANewCityName(city: String) {
         
         let params : [String : String] = ["q" : city, "appid" : APP_ID]
